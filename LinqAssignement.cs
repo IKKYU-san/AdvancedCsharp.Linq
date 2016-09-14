@@ -2,6 +2,7 @@
 namespace AdvancedCsharp.Linq
 {
     using Domain;
+    using System.Collections.Generic;    
     using System.Linq;
     using static Helper;
 
@@ -52,6 +53,20 @@ namespace AdvancedCsharp.Linq
             Header("Linq3");
 
             // Lös förra uppgiften *utan* att använda Linq
+            List<Student> allStudentsBornBefore1984 = new List<Student>();
+            foreach (var student in TestData.AllStudents)
+            {
+                if (student.Birthday.Year <= 1984 && student.FavoriteSubject == "Mathematics")
+                {
+                    allStudentsBornBefore1984.Add(student);
+                }
+            }
+            allStudentsBornBefore1984.Sort(delegate (Student x, Student y)
+            {
+                return x.Id.CompareTo(y.Id);
+            });
+                
+            DisplayList(allStudentsBornBefore1984);
 
         }
 
