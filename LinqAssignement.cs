@@ -2,6 +2,7 @@
 namespace AdvancedCsharp.Linq
 {
     using Domain;
+    using System.Linq;
     using static Helper;
 
     class LinqAssignement
@@ -29,7 +30,7 @@ namespace AdvancedCsharp.Linq
             // Använd LINQ för att lösa uppgiften
             // Utgå ifrån "AllStudents"
             // Sortera studenterna utifrån födelsedag 
-
+            DisplayList(TestData.AllStudents.OrderBy(x => x.Birthday));
         }
 
 
@@ -41,6 +42,7 @@ namespace AdvancedCsharp.Linq
             // Utgå ifrån "AllStudents"
             // Ta fram de studenter som är födda 1984 eller är tidigare (alltså de som är gamla) och där favoritämnet är matematik
             // Sortera utefter Id
+            DisplayList(TestData.AllStudents.OrderBy(x => x.Id).Where(x => x.Birthday.Year <= 1984 && x.FavoriteSubject == "Mathematics"));
 
         }
 

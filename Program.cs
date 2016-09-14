@@ -7,7 +7,7 @@ namespace AdvancedCsharp.Linq
         static void Main(string[] args)
         {
             SetupConsoleWindow();
-            new LinqExample1().Run();
+            new LinqAssignement().Run();
             StopAndWaitForUser();
         }
 
