@@ -63,6 +63,10 @@ namespace AdvancedCsharp.Linq
                 }
             }
 
+            // Det här är väl bara lambda och inte linq? Även om det är likt Linq med method syntax ;)
+            // Om inte så har jag en lösning till med delegate längre ner...
+            //allStudentsBornBefore1984.Sort((x, y) => x.Id.CompareTo(y.Id));
+
             allStudentsBornBefore1984.Sort(delegate (Student x, Student y)
             {
                 return x.Id.CompareTo(y.Id);
