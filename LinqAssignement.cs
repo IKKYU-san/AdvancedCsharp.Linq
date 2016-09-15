@@ -148,7 +148,16 @@ namespace AdvancedCsharp.Linq
             // Skriv ut dictionary't
             // Hämta sedan upp förnamnet på den student med det id som skickas in i metoden
             // Om id't inte finns i dictionary't så meddela användaren detta 
+            var studentDictionary = TestData.AllStudents.Select(x => new { x.Id, x.FirstName }).ToDictionary(x => x.Id, x => x.FirstName);
+            DisplayList(studentDictionary);
 
+            var student = studentDictionary.Where(x => x.Key == id).Select(x => x.Value).FirstOrDefault();
+            if (student == null)
+            {
+                Console.WriteLine($"Student med id={id} finns ej");
+                return;
+            }
+            Console.WriteLine($"Förnamn på student med id {id}: {student}");
         }
     }
 }
