@@ -61,6 +61,7 @@ namespace AdvancedCsharp.Linq
                     allStudentsBornBefore1984.Add(student);
                 }
             }
+
             allStudentsBornBefore1984.Sort(delegate (Student x, Student y)
             {
                 return x.Id.CompareTo(y.Id);
@@ -78,6 +79,8 @@ namespace AdvancedCsharp.Linq
             // Använd LINQ för att lösa uppgiften
             // Utgå ifrån "AllStudents"
             // Ta fram de studenter som har matematik som favoritämne och räkna ihop hur många böcker de har tillsammans
+            int numberOfBooksOwned = TestData.AllStudents.Where(x => x.FavoriteSubject == "Mathematics").Sum(x => x.NumberOfOwnedBooks);
+            System.Console.WriteLine($"Antal böcker: {numberOfBooksOwned}");
 
         }
 
