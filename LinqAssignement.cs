@@ -127,7 +127,13 @@ namespace AdvancedCsharp.Linq
             // Utgå ifrån "AllStudents"
             // Leta upp namnet på studenten med id't som skickas in som parameter
             // Om studenten inte finns så skriv ut detta
-
+            var student = TestData.AllStudents.Where(x => x.Id == id).Select(x => x.FirstName).FirstOrDefault();
+            if (student == null)
+            {
+                Console.WriteLine($"Student med id={id} finns inte");
+                return;
+            }
+            Console.WriteLine($"Student med id={id} heter {student}");
         }
 
 
