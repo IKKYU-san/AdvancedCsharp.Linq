@@ -2,6 +2,7 @@
 namespace AdvancedCsharp.Linq
 {
     using Domain;
+    using System;
     using System.Collections.Generic;    
     using System.Linq;
     using static Helper;
@@ -80,7 +81,7 @@ namespace AdvancedCsharp.Linq
             // Utgå ifrån "AllStudents"
             // Ta fram de studenter som har matematik som favoritämne och räkna ihop hur många böcker de har tillsammans
             int numberOfBooksOwned = TestData.AllStudents.Where(x => x.FavoriteSubject == "Mathematics").Sum(x => x.NumberOfOwnedBooks);
-            System.Console.WriteLine($"Antal böcker: {numberOfBooksOwned}");
+            Console.WriteLine($"Antal böcker: {numberOfBooksOwned}");
 
         }
 
@@ -94,7 +95,7 @@ namespace AdvancedCsharp.Linq
             // Ta fram de nummer som är lägre än 300 och samtidigt är ett jämnt tal
             // Skapa en lista av strängar där du placerar en hakparantes runt varje heltal, t.ex [202]
             // Skriv sedan ut denna lista av strängar
-
+            DisplayList(new List<string>(TestData.SomeHighNumbersWithExtra.Where(x => x <= 300 && x % 2 == 0).Select(x => String.Concat($"[{x.ToString()}]")).ToList()));
         }
 
         private void Linq6()
