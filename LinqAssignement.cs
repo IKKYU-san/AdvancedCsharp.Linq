@@ -95,7 +95,7 @@ namespace AdvancedCsharp.Linq
             // Ta fram de nummer som är lägre än 300 och samtidigt är ett jämnt tal
             // Skapa en lista av strängar där du placerar en hakparantes runt varje heltal, t.ex [202]
             // Skriv sedan ut denna lista av strängar
-            DisplayList(new List<string>(TestData.SomeHighNumbersWithExtra.Where(x => x <= 300 && x % 2 == 0).Select(x => String.Concat($"[{x.ToString()}]")).ToList()));
+            DisplayList(new List<string>(TestData.SomeHighNumbersWithExtra.Where(x => x <= 300 && x % 2 == 0).Select(x => $"[{x.ToString()}]").ToList()));
         }
 
         private void Linq6()
@@ -109,6 +109,12 @@ namespace AdvancedCsharp.Linq
             // Gruppera studenterna utifrån vilket år de är födda
             // För varje grupp: Skriv ut en rubrik "Födelseår: XXXX" och under detta förnamnen på studenterna som fyller år detta år
             // I varje grupp ska studenterna vara sorterade på förnamn
+            var result = TestData.AllStudents.GroupBy(x => x.Birthday.Year).OrderBy(x => x.Key);
+            foreach (var year in result)
+            {
+                Console.WriteLine($"Födelseår: {year.Key}");
+                DisplayList(year.OrderBy(x => x.FirstName).Select(x => $"* {x.FirstName}"));
+            }
 
         }
 
